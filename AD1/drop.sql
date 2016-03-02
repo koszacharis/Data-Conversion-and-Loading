@@ -1,0 +1,7 @@
+DROP TABLE IF EXISTS ad.Sellers;
+DROP TABLE IF EXISTS ad.Bids;
+DROP TABLE IF EXISTS ad.CategoriesList;
+DROP TABLE IF EXISTS ad.Categories;
+DROP TABLE IF EXISTS ad.Coordinates;
+DROP TABLE IF EXISTS ad.Items;
+DROP TABLE IF EXISTS ad.Bidders;

@@ -1,0 +1,56 @@
+CREATE DATABASE IF NOT EXISTS ad;
+USE ad;
+CREATE TABLE Items (
+	ItemID			INT PRIMARY KEY,
+	Name 			VARCHAR(256) NOT NULL,
+	Currently		DECIMAL(8,2) NOT NULL,
+	BuyPrice		DECIMAL(8,2) NOT NULL,
+	FirstBid		DECIMAL(8,2) NOT NULL,
+	NumberofBids		INT NOT NULL,
+	Started			TIMESTAMP NOT NULL,
+	Ends			TIMESTAMP NOT NULL,
+	Description		VARCHAR(4000) NOT NULL,
+	Country			VARCHAR(256) NOT NULL,
+	Location		VARCHAR(256) NOT NULL
+);
+
+CREATE TABLE Coordinates (
+	ItemID			INT PRIMARY KEY,
+	Longitude		VARCHAR(256) NOT NULL,
+	Latitude		VARCHAR(256) NOT NULL,
+	FOREIGN KEY (ItemID) REFERENCES Items(ItemID)
+);
+
+CREATE TABLE Categories (
+	ItemID			INT,
+	Categories		INT,
+	PRIMARY KEY (ItemID, Categories),
+	FOREIGN KEY (ItemID) REFERENCES Items(ItemID)
+);
+
+CREATE TABLE CategoriesList (
+	Name			VARCHAR(256) PRIMARY KEY NOT NULL,
+	CategoryID		INT
+);
+
+CREATE TABLE Bidders (
+	BidderID		VARCHAR(100) PRIMARY KEY,
+	Rating			INT (10) NOT NULL,
+	Location		VARCHAR(256) NOT NULL,
+	Country			VARCHAR(256) NOT NULL
+);
+
+CREATE TABLE Sellers (
+	SellerID		VARCHAR(100) PRIMARY KEY,
+	Rating			INT (10) NOT NULL
+);
+
+CREATE TABLE Bids (
+	ItemID			INT,
+	BidderID		VARCHAR(100),
+	Time 			TIMESTAMP NOT NULL,
+	Amount			DECIMAL(8,2) NOT NULL,
+	CONSTRAINT BidsKey PRIMARY KEY (ItemID,BidderID,Time),
+	FOREIGN KEY (ItemID) REFERENCES Items(ItemID),
+	FOREIGN KEY (BidderID) REFERENCES Bidders(BidderID)
+);
