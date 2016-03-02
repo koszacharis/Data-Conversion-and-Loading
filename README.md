@@ -1,6 +1,6 @@
 # AppliedDatabases
 
-# ASSIGNMENT 1: DATA LOADING
+## Assignment 1: DATA LOADING
 
 The purpose of this assignment is to design a database schema for a given dataset, shared XML data into csv-files, and
 create tables in a database and populate them via the csv-files.
